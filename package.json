@@ -1,31 +1,28 @@
 {
-  "name": "hexo-theme-ayer",
-  "version": "1.9.7-0",
-  "description": "a clean and elegant theme for hexo.",
+  "name": "hexo-theme-ayerr",
+  "version": "1.0.0",
+  "description": "a clean and elegant theme for hexo, with fixed image display issue.",
   "scripts": {
     "dev": "rollup -c -w",
     "build": "rollup -c",
-    "postinstall": "node ./move_config.js",
     "test": "stylint source-src/css/style.styl -c .stylintrc"
   },
   "source": "source-src/main.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Shen-Yu/hexo-theme-ayer.git"
+    "url": "git+<your-github-repo-url>.git"
   },
   "keywords": [
     "hexo",
     "theme",
     "blog",
-    "ayer"
+    "ayerr",
+    "image-fix"
   ],
-  "author": "Shen-Yu <shenyu@hotmail.com>",
   "license": "SATA",
   "bugs": {
-    "url": "https://github.com/Shen-Yu/hexo-theme-ayer/issues",
-    "email": "shenyu@hotmail.com"
+    "url": "<your-github-repo-url>/issues"
   },
-  "homepage": "https://shen-yu.gitee.io/",
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "rollup": "^2.50.2",

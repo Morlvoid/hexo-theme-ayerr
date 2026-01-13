@@ -1,4 +1,4 @@
-<p align="center"><a href="https://ayer.886622.xyz" target="_blank" rel="noopener noreferrer"><img width="100" src="logo.png" alt="ayer logo"></a></p>
+<p align="center"><img width="100" src="logo.png" alt="ayerr logo"></p>
 
 <h3 align="center">一个干净且优雅的 Hexo 主题</h3>
 
@@ -33,7 +33,7 @@
 
 ---
 
-:ocean: Ayer 是一个干净优雅的 Hexo 主题，同时兼具快速、强大和响应式的特性。它包含许多出色的功能，非常适合你的博客。"Ayer" 在马来西亚语中意为"水"，在西班牙语中意为"昨天"。如果您在使用过程中有任何疑问或建议，请[创建 issue](https://github.com/shen-yu/hexo-theme-ayer/issues/new/choose)。
+:ocean: ayerr 是一个干净优雅的 Hexo 主题，基于原作者的 Ayer 主题更新并修复了图片显示问题。它包含许多出色的功能，同时支持 `{% asset_img %}` 标签和传统 Markdown 图片语法，非常适合你的博客。
 
 <b>注：收藏本主题请点右上角 Star，谢谢~~ </b>
 <b>如果你想给主题添砖加瓦，可以点右上角 Fork，然后给此仓库提交 PR</b>
@@ -44,46 +44,39 @@
 
 - 将英文介绍内容翻译为中文
 - 更新了作者信息，替换为"本项目基于原作者的项目更新并加入了图片适配"
-- 添加了`{% asset_img %}`标签支持，优化本地图片路径处理
+- **修复了图片显示问题**：
+  - 实现了 `{% asset_img %}` 标签支持，支持文章资源图片的正确引用
+  - 修复了传统Markdown图片显示问题
+  - 修复了图片URL生成逻辑，确保生成正确的绝对路径
+  - 处理了外部链接和绝对路径的情况
+  - 避免了使用有问题的 `url_for` 辅助函数
+  - 为图片添加了合适的CSS类，优化显示样式
 - 优化了文章图片的显示样式
-
-### [预览](https://ayer.886622.xyz)
-
-### [中文说明](https://ayer.886622.xyz/2019/ayer/)
-
-### [国内镜像](https://gitee.com/shen-yu/hexo-theme-ayer)
 
 ![Screenshot](screenshots/hexo-theme-ayer.png)
 
 ## 安装
 
-### 适用于 hexo >= 5.0
+直接从 GitHub 克隆源代码到 themes 目录：
 
 ```shell
-npm i hexo-theme-ayer -S
+git clone <your-github-repo-url> themes/ayerr
 ```
 
-- 如果是新安装此主题，安装完成后会在根目录生成一个 `_config.ayer.yml` 文件，您可以直接编辑 `_config.ayer.yml` 文件进行配置。
-- 如果是主题升级，可以使用 hexo < 5.0 的配置方式，也可以将原配置文件移动到根目录并更名为 `_config.ayer.yml`。
-
-### 适用于 hexo < 5.0
-
-```shell
-git clone https://github.com/Shen-Yu/hexo-theme-ayer.git themes/ayer
-```
+或者手动下载源代码，解压后放入 `themes/ayerr` 目录。
 
 ## 启用
 
-修改 `_config.yml` 中的 `theme` 设置为 `ayer`
+修改 `_config.yml` 中的 `theme` 设置为 `ayerr`
 
 ```yml
-theme: ayer
+theme: ayerr
 ```
 
 ## 更新
 
 ```bash
-cd themes/ayer
+cd themes/ayerr
 git pull
 ```
 
@@ -220,7 +213,7 @@ layout:
 github:
   # (Set false if you don't need)
   enable: false
-  url: https://github.com/Shen-Yu/hexo-theme-ayer
+  url: <your-github-repo-url>
 
 # pv&uv statistics
 busuanzi:
@@ -264,23 +257,14 @@ gongan:
 
 # friends link
 friends_link:
-  Ayer: #site name
+  ayerr: #site name
     # site url
-    url: https://github.com/Shen-Yu/hexo-theme-ayer
+    url: <your-github-repo-url>
     # site icon(optional)
     img: /images/ayer.png
-  GitHub:
-    url: https://github.com/Shen-Yu
-    img: https://i.loli.net/2020/09/07/indb4PRYDA98EkN.png
-  gitee:
-    url: https://gitee.com/shen-yu
-    img: https://i.loli.net/2020/09/07/K3AqO7h6krQFlRX.png
   Hexo:
     url: https://hexo.io
     img: https://i.loli.net/2020/09/07/UYGzjo7h68CRWny.png
-  hexo-tag-chart:
-    url: https://github.com/Shen-Yu/hexo-tag-chart
-    img: https://i.loli.net/2020/09/07/GIXBYE5SoylhR1r.png
 
 # Comment：1、Valine (recommended)；2、Gitalk；3、Twikoo；4、MiniValine
 # You can close the comment section on one of your posts by marking `comments: false` in front-matter.
@@ -415,6 +399,29 @@ layout: "friends"
 
 然后在 `_config.yml` 中编辑 `friends_link` 配置。
 
+## 图片使用
+
+### 1. 使用 `{% asset_img %}` 标签
+
+```md
+{% asset_img demo.png "图片描述" %}
+```
+
+### 2. 使用传统 Markdown 语法
+
+```md
+![图片描述](demo.png)
+```
+
+### 修复说明
+
+修复后，两种方式都会生成正确的图片 URL，确保图片正常显示。修复内容包括：
+
+- 修复了 `{% asset_img %}` 标签支持
+- 修复了传统 Markdown 图片显示问题
+- 修复了图片 URL 生成逻辑
+- 优化了图片显示样式
+
 ## 相册
 
 需要在 Markdown 文件的头部写入，这不是一个很好的写法，希望能在 GitHub 上找到更好的写法。
@@ -431,14 +438,14 @@ albums: [["img_url", "img_caption"], ["img_url", "img_caption"]]
 
 使用 Tocbot 解析内容中的标题标签（h1~h6）并插入目录。
 
-- ayer/\_config.yml
+- ayerr/\_config.yml
 
   ```bash
   # 文章目录
   toc: true
   ```
 
-- 如果在 ayer/\_config.yml 中开启了 Toc，那么 Tocbot 会在每个博客解析内容的标题标签中生成 Toc 文章目录，但并非所有博客都需要 Toc，因此可以在 markdown 的 Front-matter 部分关闭：
+- 如果在 ayerr/\_config.yml 中开启了 Toc，那么 Tocbot 会在每个博客解析内容的标题标签中生成 Toc 文章目录，但并非所有博客都需要 Toc，因此可以在 markdown 的 Front-matter 部分关闭：
 
   ```md
   ---
@@ -450,28 +457,8 @@ albums: [["img_url", "img_caption"], ["img_url", "img_caption"]]
 
 <br/>
 
-## 代码贡献者
-
-这个项目的存在要感谢所有贡献者。
-
-<a href="https://github.com/Shen-Yu/hexo-theme-ayer/graphs/contributors"><img src="https://opencollective.com/ayer/contributors.svg?width=890&button=false" /></a>
-
-## 星标历史
-
-[![Stargazers over time](https://starchart.cc/Shen-Yu/hexo-theme-ayer.svg)](https://starchart.cc/Shen-Yu/hexo-theme-ayer)
-
 ## 许可证
 
-<a src="https://github.com/Shen-Yu/hexo-theme-ayer">Ayer</a> 由 <a href="https://github.com/Shen-Yu">Eric-Shen</a> 开发，采用 <a rel="license" href="https://github.com/Shen-Yu/hexo-theme-ayer/blob/master/LICENSE">SATA-License</a> 许可证。
+ayerr 主题基于原作者的 Ayer 主题，采用 <a rel="license" href="LICENSE">SATA-License</a> 许可证。
 
-SATA 许可证的基本理念是，当使用采用 SATA 许可证的项目时，人们应该给该项目点赞/加星，并感谢作者。想象一下，谷歌因为在 GitHub 上使用了你的项目而给你点赞并发送感谢信！
-<br>
-
-本项目采用<a rel="license" href="https://github.com/Shen-Yu/hexo-theme-ayer/blob/master/LICENSE">SATA</a>开源协议，在遵守 MIT 许可证的前提下，你应该马不停蹄的给这个开源项目“点个赞”，比如 github 右上角的 star，然后你应该感谢这个开源项目的作者，作者信息可以在许可证头部的版权声明部分找到。<br>
-
-下面是几条 SATA 作者推荐的感谢途径，也是 SATA 包含的内容：
-
-- 给你使用的开源项目的作者发个 Email，和他交个朋友
-- 提出你在使用过程中发现的 BUG 或者提一些建设性的意见
-- 告诉你的朋友们这是一个多棒的开源项目
-- 当然，你也可以只是在心里默默的感激，不用让全世界都知道
+SATA 许可证的基本理念是，当使用采用 SATA 许可证的项目时，人们应该给该项目点赞/加星，并感谢作者。

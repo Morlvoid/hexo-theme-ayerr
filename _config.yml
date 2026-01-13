@@ -123,7 +123,7 @@ layout:
 github:
   # (关闭请设置为false)
   enable: true
-  url: https://github.com/Shen-Yu/hexo-theme-ayer
+  url: <your-github-repo-url>
 
 # 网易云音乐插件
 music:
@@ -180,23 +180,14 @@ gongan:
 
 # 友情链接
 friends_link:
-  Ayer主题: #网站名称
+  ayerr主题: #网站名称
     #网站地址
-    url: https://github.com/Shen-Yu/hexo-theme-ayer
+    url: <your-github-repo-url>
     #网站图片(可忽略不写)
     img: /images/ayer.png
-  GitHub:
-    url: https://github.com/Shen-Yu
-    img: /images/github.png
-  码云:
-    url: https://gitee.com/shen-yu
-    img: /images/gitee.png
   Hexo官网:
     url: https://hexo.io
     img: /images/hexo.png
-  Hexo图表插件:
-    url: https://github.com/Shen-Yu/hexo-tag-chart
-    img: /images/hexo-tag-chart.png
 
 # 评论：1、Valine(推荐)；2、Gitalk；3、Twikoo;
 
