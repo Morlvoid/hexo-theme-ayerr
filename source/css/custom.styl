@@ -34,3 +34,18 @@ if hexo-config('mouse.enable')
         &.on
             transform translateX(0)
     
+// 文章内容内的图片基础样式 
+.post-content, .article-content { 
+    img { 
+        display: block; 
+        max-width: 100%; 
+        height: auto; 
+        margin: 1.5rem auto; 
+        border-radius: 4px; 
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); 
+        &[class*="article-img"] { 
+            // 专门为 asset_img 标签添加的样式 
+            cursor: zoom-in; // 如果启用了 image_viewer，提示可点击放大 
+        } 
+    } 
+}

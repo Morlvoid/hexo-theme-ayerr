@@ -33,15 +33,21 @@
 
 ---
 
-:ocean: Ayer is a clean and elegant theme for Hexo, also fast, powerful and responsive. It contains many awesome features, It's perfect for your blog, "Ayer" means "water" in Malaysian and "yesterday" in Spanish. [Create an issue](https://github.com/shen-yu/hexo-theme-ayer/issues/new/choose) if you have any queries or advice during the process of using, 
+:ocean: Ayer 是一个干净优雅的 Hexo 主题，同时兼具快速、强大和响应式的特性。它包含许多出色的功能，非常适合你的博客。"Ayer" 在马来西亚语中意为"水"，在西班牙语中意为"昨天"。如果您在使用过程中有任何疑问或建议，请[创建 issue](https://github.com/shen-yu/hexo-theme-ayer/issues/new/choose)。
 
 <b>注：收藏本主题请点右上角 Star，谢谢~~ </b>
 <b>如果你想给主题添砖加瓦，可以点右上角 Fork，然后给此仓库提交 PR</b>
 
-## 本人已转行不做码农了，项目暂停维护，仅供学习！！
-## QQ：448766534
+## 本项目基于原作者的项目更新并加入了图片适配
 
-### [Preview 预览](https://ayer.886622.xyz)
+## 更新日志
+
+- 将英文介绍内容翻译为中文
+- 更新了作者信息，替换为"本项目基于原作者的项目更新并加入了图片适配"
+- 添加了`{% asset_img %}`标签支持，优化本地图片路径处理
+- 优化了文章图片的显示样式
+
+### [预览](https://ayer.886622.xyz)
 
 ### [中文说明](https://ayer.886622.xyz/2019/ayer/)
 
@@ -49,47 +55,47 @@
 
 ![Screenshot](screenshots/hexo-theme-ayer.png)
 
-## Install
+## 安装
 
-### For hexo >= 5.0
+### 适用于 hexo >= 5.0
 
 ```shell
 npm i hexo-theme-ayer -S
 ```
 
-- If this theme is newly installed, a `_config.ayer.yml` file will be generated in the root directory after the installation is complete, and you can directly edit the `_config.ayer.yml` file for configuration.
-- If it is a theme upgrade, you can use the configuration method of hexo < 5.0, or you can move the original configuration file to the root directory and rename it to `_config.ayer.yml`.
+- 如果是新安装此主题，安装完成后会在根目录生成一个 `_config.ayer.yml` 文件，您可以直接编辑 `_config.ayer.yml` 文件进行配置。
+- 如果是主题升级，可以使用 hexo < 5.0 的配置方式，也可以将原配置文件移动到根目录并更名为 `_config.ayer.yml`。
 
-### For hexo < 5.0
+### 适用于 hexo < 5.0
 
 ```shell
 git clone https://github.com/Shen-Yu/hexo-theme-ayer.git themes/ayer
 ```
 
-## Enable
+## 启用
 
-Modify `theme` setting in `_config.yml` to `ayer`
+修改 `_config.yml` 中的 `theme` 设置为 `ayer`
 
 ```yml
 theme: ayer
 ```
 
-## Update
+## 更新
 
 ```bash
 cd themes/ayer
 git pull
 ```
 
-## Multi Language Support
+## 多语言支持
 
 zh-CN（中文简体） en（English） zh-TW（中文繁体） ja（日本語） es（Español） de（Deutsch） fr（Français） ru（Русский） ko（한국어） vi（Tiếng Việt） nl（Nederlands） no（norsk） pt（Português）
 
-English is default languge, if you want to change, modify `language` option in `_config.yml` file in your Hexo blog's root folder.
+默认语言为英语，如需更改，请修改 Hexo 博客根目录 `_config.yml` 文件中的 `language` 选项。
 
-## Configuration
+## 配置
 
-let me know if you have any questions.
+如果您有任何问题，请告诉我。
 
 ```yml
 # Menu-Sidebar
@@ -326,15 +332,15 @@ lock:
   password: 123456
 ```
 
-## Plugins
+## 插件
 
-- [hexo-generator-search](https://github.com/wzpan/hexo-generator-search) (for Local Search)
+- [hexo-generator-search](https://github.com/wzpan/hexo-generator-search)（用于本地搜索）
 
   ```yml
   $ npm install hexo-generator-searchdb --save
   ```
 
-  Then add the plugin configuration in hexo's configuration file `_config.yml` (note: not the theme's configuration file):
+  然后在 Hexo 的配置文件 `_config.yml` 中添加插件配置（注意：不是主题的配置文件）：
 
   ```yml
   # Hexo-generator-search
@@ -344,13 +350,13 @@ lock:
     format: html
   ```
 
-- [hexo-generator-feed](https://github.com/hexojs/hexo-generator-feed) (for RSS)
+- [hexo-generator-feed](https://github.com/hexojs/hexo-generator-feed)（用于 RSS）
 
   ```yml
   $ npm install hexo-generator-feed --save
   ```
 
-  Then add the plugin configuration in hexo's configuration file `_config.yml` (note: not the theme's configuration file):
+  然后在 Hexo 的配置文件 `_config.yml` 中添加插件配置（注意：不是主题的配置文件）：
 
   ```yml
   feed:m
@@ -364,20 +370,20 @@ lock:
       order_by: -date
   ```
 
-- [hexo-generator-index-pin-top](https://github.com/netcan/hexo-generator-index-pin-top) (for Sticky Post)
+- [hexo-generator-index-pin-top](https://github.com/netcan/hexo-generator-index-pin-top)（用于文章置顶）
 
   ```bash
   $ npm uninstall hexo-generator-index --save
   $ npm install hexo-generator-index-pin-top --save
   ```
 
-## Categories
+## 分类页
 
 ```bash
   hexo new page categories
 ```
 
-Then paste following codes to file: /source/categories/index.md
+然后将以下代码粘贴到文件：/source/categories/index.md
 
 ```md
 ---
@@ -387,17 +393,17 @@ layout: "categories"
 ---
 ```
 
-## Tags
+## 标签页
 
-Same as categories.
+与分类页操作相同。
 
-## Friend Links
+## 友链页
 
 ```bash
 hexo new page friends
 ```
 
-Then paste following codes to file: /source/friends/index.md
+然后将以下代码粘贴到文件：/source/friends/index.md
 
 ```md
 ---
@@ -407,11 +413,11 @@ layout: "friends"
 ---
 ```
 
-Then edit `friends_link` in `_config.yml`
+然后在 `_config.yml` 中编辑 `friends_link` 配置。
 
-## Gallery
+## 相册
 
-Need to write in the head of the markdown, this is not a good way to write, I hope to get a better way to write on github.
+需要在 Markdown 文件的头部写入，这不是一个很好的写法，希望能在 GitHub 上找到更好的写法。
 
 ```md
 ---
@@ -421,18 +427,18 @@ albums: [["img_url", "img_caption"], ["img_url", "img_caption"]]
 ---
 ```
 
-## Toc
+## 文章目录
 
-Use Tocbot to parse the title tags (h1~h6) in the content and insert the directory.
+使用 Tocbot 解析内容中的标题标签（h1~h6）并插入目录。
 
 - ayer/\_config.yml
 
   ```bash
-  # Toc
+  # 文章目录
   toc: true
   ```
 
-- If Toc is turned on in ayer/\_config.yml, then Tocbot will generate a Toc article directory in the title tag of each blog parsing content, but not all blogs require Toc, so in the Front-matter section of markdown Can be closed:
+- 如果在 ayer/\_config.yml 中开启了 Toc，那么 Tocbot 会在每个博客解析内容的标题标签中生成 Toc 文章目录，但并非所有博客都需要 Toc，因此可以在 markdown 的 Front-matter 部分关闭：
 
   ```md
   ---
@@ -444,21 +450,21 @@ Use Tocbot to parse the title tags (h1~h6) in the content and insert the directo
 
 <br/>
 
-## Code Contributors
+## 代码贡献者
 
-This project exists thanks to all the people who contribute.
+这个项目的存在要感谢所有贡献者。
 
 <a href="https://github.com/Shen-Yu/hexo-theme-ayer/graphs/contributors"><img src="https://opencollective.com/ayer/contributors.svg?width=890&button=false" /></a>
 
-## Stargazers over time
+## 星标历史
 
 [![Stargazers over time](https://starchart.cc/Shen-Yu/hexo-theme-ayer.svg)](https://starchart.cc/Shen-Yu/hexo-theme-ayer)
 
-## License
+## 许可证
 
-<a src="https://github.com/Shen-Yu/hexo-theme-ayer">Ayer</a> by <a  href="https://github.com/Shen-Yu">Eric-Shen</a> is licensed under <a rel="license" href="https://github.com/Shen-Yu/hexo-theme-ayer/blob/master/LICENSE">SATA-License</a>.
+<a src="https://github.com/Shen-Yu/hexo-theme-ayer">Ayer</a> 由 <a href="https://github.com/Shen-Yu">Eric-Shen</a> 开发，采用 <a rel="license" href="https://github.com/Shen-Yu/hexo-theme-ayer/blob/master/LICENSE">SATA-License</a> 许可证。
 
-The basic idea is, whenever using a project using SATA license, people shall star/like/+1 that project and thank the author. Just imagine Google stared your project and send you a thank-you letter because they used your project in github!
+SATA 许可证的基本理念是，当使用采用 SATA 许可证的项目时，人们应该给该项目点赞/加星，并感谢作者。想象一下，谷歌因为在 GitHub 上使用了你的项目而给你点赞并发送感谢信！
 <br>
 
 本项目采用<a rel="license" href="https://github.com/Shen-Yu/hexo-theme-ayer/blob/master/LICENSE">SATA</a>开源协议，在遵守 MIT 许可证的前提下，你应该马不停蹄的给这个开源项目“点个赞”，比如 github 右上角的 star，然后你应该感谢这个开源项目的作者，作者信息可以在许可证头部的版权声明部分找到。<br>
