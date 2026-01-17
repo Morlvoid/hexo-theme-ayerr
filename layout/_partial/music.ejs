@@ -1,16 +1,60 @@
-<div id="music">
-    <%# "bottom:120px; left:auto;position:fixed;  width:85%" %>
-    <% var defaultHeight = theme.music.type == 1 ? '32' : '66'; %>
-    <% var defaultIframeHeight = theme.music.type == 1 ? '52' : '86'; %>
-    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="<%=defaultIframeHeight%>"
-        src="//music.163.com/outchain/player?type=2&id=<%=theme.music.id||22707008%>&auto=<%=theme.music.autoPlay?1:0%>&height=<%=defaultHeight%>"></iframe>
-</div>
+<% if (theme.music && theme.music.enable) { %>
+    <div id="music">
+        <% var defaultHeight = theme.music.type == 1 ? '32' : '66'; %>
+            <% var defaultIframeHeight = theme.music.type == 1 ? '52' : '86'; %>
 
-<style>
-    #music {
-        position: fixed;
-        right: 15px;
-        bottom: 0;
-        z-index: 998;
-    }
-</style>
+                <% // 获取自定义尺寸 %>
+                    <% var musicSize = theme.music.size || {}; %>
+                        <% var musicWidth = musicSize.width || '300px'; %>
+                            <% var musicHeight = musicSize.height || '86px'; %>
+                                <% var musicIframeHeight = parseInt(musicHeight) + 20 + 'px'; %>
+
+                                    <% if (theme.music.lazyload) { %>
+                                        <div id="music-placeholder" style="width: <%= musicWidth %>; height: <%= musicHeight %>; display: flex; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.1); border-radius: 4px; cursor: pointer;">
+                                            <i class="ri-music-line" style="font-size: 24px; color: #999;"></i>
+                                            <span style="margin-left: 8px; color: #999;">加载音乐播放器</span>
+                                        </div>
+                                        <iframe id="music-iframe" frameborder="no" border="1" marginwidth="0" marginheight="0" width="<%= musicWidth %>" height="<%= musicHeight %>" src="" style="display: none;"></iframe>
+                                        <% } else { %>
+                                            <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="<%= musicWidth %>" height="<%= musicHeight %>" src="//music.163.com/outchain/player?type=2&id=<%=theme.music.id||22707008%>&auto=<%=theme.music.autoPlay?1:0%>&height=<%=defaultHeight%>"></iframe>
+                                            <% } %>
+    </div>
+
+    <style>
+        #music {
+            position: fixed;
+            right: 15px;
+            bottom: 0;
+            z-index: 998;
+        }
+    </style>
+
+    <% if (theme.music.lazyload) { %>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const placeholder = document.getElementById('music-placeholder');
+                const iframe = document.getElementById('music-iframe');
+
+                if (placeholder && iframe) {
+                    placeholder.addEventListener('click', function() {
+                        // 加载音乐播放器
+                        iframe.src = '//music.163.com/outchain/player?type=2&id=<%=theme.music.id||22707008%>&auto=<%=theme.music.autoPlay?1:0%>&height=<%=defaultHeight%>';
+                        iframe.style.display = 'block';
+                        placeholder.style.display = 'none';
+                    });
+
+                    // 也可以在页面滚动到一定位置时自动加载
+                    window.addEventListener('scroll', function() {
+                        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                        if (scrollTop > 300) {
+                            iframe.src = '//music.163.com/outchain/player?type=2&id=<%=theme.music.id||22707008%>&auto=<%=theme.music.autoPlay?1:0%>&height=<%=defaultHeight%>';
+                            iframe.style.display = 'block';
+                            placeholder.style.display = 'none';
+                            window.removeEventListener('scroll', arguments.callee);
+                        }
+                    });
+                }
+            });
+        </script>
+        <% } %>
+            <% } %>

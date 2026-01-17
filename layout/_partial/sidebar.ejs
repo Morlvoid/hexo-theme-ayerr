@@ -1,34 +1,109 @@
-<button class="navbar-toggle"></button>
-<nav class="navbar">
-  <% if (theme.logo){ %>
-  <div class="logo">
-    <a href="<%- url_for() %>"><img src="<%- theme.logo %>" alt="<%= config.title %>"></a>
-  </div>
+<%
+  // 侧边栏宽度
+  const sidebarWidth = theme.sidebar?.width || '12rem';
+  
+  // 侧边栏背景样式
+  const sidebarBgStyle = theme.sidebar?.background?.style || 'solid';
+  const sidebarBgColor = theme.sidebar?.background?.color || 'rgba(0, 0, 0, 0.8)';
+  const sidebarBgGradientFrom = theme.sidebar?.background?.gradient?.from || 'rgba(0, 0, 0, 0.8)';
+  const sidebarBgGradientTo = theme.sidebar?.background?.gradient?.to || 'rgba(30, 30, 30, 0.9)';
+  const sidebarBgPreset = theme.sidebar?.background?.preset || 'default';
+  
+  // 侧边栏边框配置
+  const sidebarBorderEnable = theme.sidebar?.border?.enable || true;
+  const sidebarBorderWidth = theme.sidebar?.border?.width || '1px';
+  const sidebarBorderColor = theme.sidebar?.border?.color || 'rgba(255, 255, 255, 0.1)';
+  const sidebarBorderStyle = theme.sidebar?.border?.style || 'solid';
+  
+  // 侧边栏排版配置
+  const sidebarTypography = theme.sidebar?.typography || {};
+  const sidebarFont = sidebarTypography.font || "Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif";
+  const sidebarFontSize = sidebarTypography.font_size || '1.4rem';
+  const sidebarLineHeight = sidebarTypography.line_height || '1.8';
+  const sidebarColor = sidebarTypography.color || '#bbb';
+  const sidebarHoverColor = sidebarTypography.hover_color || '#fff';
+  
+  // 预设背景样式
+  const presetBackgrounds = {
+    default: 'rgba(0, 0, 0, 0.8)',
+    dark: 'rgba(30, 30, 30, 0.95)',
+    light: 'rgba(245, 245, 245, 0.95)',
+    colorful: 'linear-gradient(to bottom, rgba(45, 100, 150, 0.9), rgba(30, 60, 90, 0.95))'
+  };
+  
+  // 获取背景样式
+  let backgroundStyle = '';
+  if (sidebarBgPreset && presetBackgrounds[sidebarBgPreset]) {
+    if (presetBackgrounds[sidebarBgPreset].includes('linear-gradient')) {
+      backgroundStyle = `background: ${presetBackgrounds[sidebarBgPreset]};`;
+    } else {
+      backgroundStyle = `background-color: ${presetBackgrounds[sidebarBgPreset]};`;
+    }
+  } else if (sidebarBgStyle === 'solid') {
+    backgroundStyle = `background-color: ${sidebarBgColor};`;
+  } else if (sidebarBgStyle === 'gradient') {
+    backgroundStyle = `background: linear-gradient(to bottom, ${sidebarBgGradientFrom}, ${sidebarBgGradientTo});`;
+  } else if (sidebarBgStyle === 'transparent') {
+    backgroundStyle = 'background-color: transparent;';
+  }
+%>
+
+    <button class="navbar-toggle"></button>
+    <nav class="navbar" style="
+  <% if (sidebarBorderEnable) { %>
+    border-right: <%= sidebarBorderWidth %> <%= sidebarBorderStyle %> <%= sidebarBorderColor %>;
   <% } %>
-  <ul class="nav nav-main">
-    <% for (var i in theme.menu){ %>
-    <li class="nav-item">
-      <a class="nav-item-link" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
-    </li>
-    <% } %>
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      <% if (theme.search){ %>
-      <a class="nav-item-link nav-item-search"  title="<%= __('search') %>">
-        <i class="ri-search-line"></i>
-      </a>
-      <% } %>
-      <% if (theme.rss){ %>
-      <a class="nav-item-link" target="_blank" href="<%- url_for(theme.rss) %>" title="<%= __('rss_feed') %>">
-        <i class="ri-rss-line"></i>
-      </a>
-      <% } %>
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <%- partial('post/search') %>
-</div>
+  font-family: <%= sidebarFont %>;
+  font-size: <%= sidebarFontSize %>;
+  line-height: <%= sidebarLineHeight %>;
+  background-color: transparent !important;
+">
+        <% if (theme.logo){ %>
+            <div class="logo">
+                <a href="<%- url_for() %>"><img src="<%- theme.logo %>" alt="<%= config.title %>"></a>
+            </div>
+            <% } %>
+                <ul class="nav nav-main">
+                    <% for (var i in theme.menu){ %>
+                        <li class="nav-item">
+                            <a class="nav-item-link" href="<%- url_for(theme.menu[i]) %>" style="
+        color: <%= sidebarColor %>;
+      ">
+                                <%= i %>
+                            </a>
+                        </li>
+                        <% } %>
+                </ul>
+    </nav>
+    <nav class="navbar navbar-bottom" style="
+  font-family: <%= sidebarFont %>;
+  background-color: transparent !important;
+">
+        <ul class="nav">
+            <li class="nav-item">
+                <% if (theme.search){ %>
+                    <a class="nav-item-link nav-item-search" title="<%= __('search') %>" style="
+        color: <%= sidebarColor %>;
+      ">
+                        <i class="ri-search-line"></i>
+                    </a>
+                    <% } %>
+                        <% if (theme.rss && theme.rss !== ''){ %>
+                            <a class="nav-item-link" target="_blank" href="<%- url_for(theme.rss) %>" title="<%= __('rss_feed') %>" style="
+        color: <%= sidebarColor %>;
+      ">
+                                <i class="ri-rss-line"></i>
+                            </a>
+                            <% } %>
+            </li>
+        </ul>
+    </nav>
+    <div class="search-form-wrap">
+        <%- partial('post/search') %>
+    </div>
+
+    <style>
+        .nav-item-link:hover {
+            color: <%=sidebarHoverColor %> !important;
+        }
+    </style>
