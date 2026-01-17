@@ -10,7 +10,7 @@ menu:
   关于: /about
 
 
-# 站点次标题和打字动效
+# 站点次标题和打字动效配置
 # https://github.com/mattboldt/typed.js
 subtitle:
   enable: true # 是否开启动效
@@ -37,7 +37,7 @@ cover:
 # 页面顶部进度条
 progressBar: true
 
-# 告示板模块
+# - `broadcast`: 告示板模块配置
 broadcast:
   enable: true # true开启，false关闭
   type: 1 # 1：自定义输入，2：一言api(https://hitokoto.cn/)
@@ -98,7 +98,7 @@ copyright_type: 2
 # 搜索功能配置
 search:
   path: search.xml               # 搜索文件路径，设置为 XML 格式
-  field: post                    # 搜索范围：post（仅文章）、page（仅页面）、all（全部）
+  field: all                    # 搜索范围：post（仅文章）、page（仅页面）、all（全部）
   content: true                  # 是否包含文章内容
   format: striptags              # 内容格式化方式：striptags（去除标签）、raw（原始内容）
 
