@@ -194,13 +194,6 @@ friends_link:
     url: https://github.com/Morlvoid/hexo-theme-ayerr
     # 网站图片(可忽略不写)  # 这行不是正确的YAML注释
     img: /images/logo.png
-  Tokameine:
-    url: https://tokameine.top
-    img: /images/tokameine.png
-  fulie-blog:
-    url: https://pcb.im/
-    img: https://q2.qlogo.cn/headimg_dl?dst_uin=3672492995&spec=5
-
 
 
 # 评论：1、Valine(推荐)；2、Gitalk；3、Twikoo; 4.MiniValine
