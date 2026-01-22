@@ -176,13 +176,13 @@ since: 2020
 icp:
   enable: true
   url: "https://beian.miit.gov.cn/" # 备案链接
-  text: "鲁ICP备2021025942号" # 备案信息
+  text: "1111111111111111" # 备案信息
 # 公安备案信息尾部显示
 gongan:
   enable: false
   img: /images/beian.png #公安备案图片
   url: "https://beian.mps.gov.cn/#/query/webSearch" #公安备案链接
-  text: "鲁ICP备2021025942号" #公安备案信息
+  text: "1111111111111111" #公安备案信息
 
 # 友情链接
 friends_link:
