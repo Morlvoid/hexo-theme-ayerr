@@ -26,6 +26,7 @@
         return content;
     }
 %>
+
 <article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %>" itemscope itemprop="blogPost" data-scroll-reveal>
     <div class="article-inner">
         <% if (post.link || post.title){ %>
@@ -68,6 +69,7 @@
           const fixedExcerpt = fixImagePaths(post.excerpt, postPath);
       %>
                                                                 <%- fixedExcerpt %>
+
                                                                     <% if
       (theme.excerpt_link){ %>
                                                                         <a class="article-more-link" href="<%- url_for(post.path) %>">
