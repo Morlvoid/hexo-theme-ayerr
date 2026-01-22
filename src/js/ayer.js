@@ -63,7 +63,7 @@
                 isMobile.Opera() ||
                 isMobile.Windows()
             );
-        },
+        }
     };
 
     // Share
@@ -71,13 +71,13 @@
 
     // Lazyload
     $("img.lazy").lazyload({
-        effect: "fadeIn",
+        effect: "fadeIn"
     });
 
     // JustifiedGallery
     $("#gallery").justifiedGallery({
         rowHeight: 200,
-        margins: 5,
+        margins: 5
     });
 
     // ScrollDown
@@ -193,8 +193,7 @@
     );
 })(jQuery);
 
-// Tracking - 暂时注释掉 51.la 统计脚本，避免 403 错误
-/*
+// Tracking
 !(function(p) {
     "use strict";
     !(function(t) {
@@ -207,17 +206,16 @@
             ),
             n = e.createElement("script"),
             r = e.getElementsByTagName("script")[0];
-        (n.type = "text/javascript"),
-        n.setAttribute("charset", "UTF-8"),
-            (n.async = !0),
-            (n.src = c),
-            (n.id = "LA_COLLECT"),
-            (i.d = n);
+        n.type = "text/javascript";
+        n.setAttribute("charset", "UTF-8");
+        n.async = !0;
+        n.src = c;
+        n.id = "LA_COLLECT";
+        i.d = n;
         var o = function() {
             s.LA.ids.push(i);
         };
-        s.LA ? s.LA.ids && o() : ((s.LA = p), (s.LA.ids = []), o()),
-            r.parentNode.insertBefore(n, r);
+        s.LA ? s.LA.ids && o() : ((s.LA = p), (s.LA.ids = []), o());
+        r.parentNode.insertBefore(n, r);
     })();
 })({ id: "JGjrOr2rebvP6q2a", ck: "JGjrOr2rebvP6q2a" });
-*/

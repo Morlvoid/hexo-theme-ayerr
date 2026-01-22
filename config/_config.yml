@@ -5,7 +5,7 @@ menu:
   分类: /categories
   项目: /project # FontAwesome 图标
   # 标签: /tags/  # 这里将被删除
-  画作: /photos.html
+  画作: /photos
   友链: /friends
   关于: /about
 
@@ -95,16 +95,11 @@ copyright_type: 2
 
 # 是否启用搜索
 # 需要安装hexo-generator-searchdb(https://github.com/theme-next/hexo-generator-searchdb)
-# 搜索功能配置
-search:
-  path: search.xml               # 搜索文件路径，设置为 XML 格式
-  field: all                    # 搜索范围：post（仅文章）、page（仅页面）、all（全部）
-  content: true                  # 是否包含文章内容
-  format: striptags              # 内容格式化方式：striptags（去除标签）、raw（原始内容）
+search: true
 
 # RSS订阅(先安装hexo-generator-feed插件，再去博客根目录config进行配置)
 # 不想显示可以直接留空
-rss: 
+rss: /atom.xml
 
 # 是否启用黑夜模式开关
 darkmode: true
@@ -114,7 +109,7 @@ canvas_bg: 0
 
 # 自定义鼠标样式，直接替换/images/mouse.cur文件
 mouse:
-  enable: true
+  enable: false
   path: /images/mouse.cur
 
 # 鼠标点击效果：0-关闭，1-爱心，2-爆炸烟花，3-粒子烟花
@@ -123,7 +118,7 @@ click_effect: 0
 # 页面宽度自定义（不建议修改，可能造成布局混乱），article_width文章宽度，sidebar_width侧边栏宽度
 layout:
   article_width: 80rem
-  sidebar_width: 8rem
+  sidebar_width: 10rem
 
 # GitHub Ribbons-封面右上角的forkme，换样式直接在source/images目录下替换forkme图片
 github:
@@ -133,11 +128,17 @@ github:
 
 # 网易云音乐插件
 music:
-  enable: false
+  enable: true
   # 播放器尺寸类型(1：小尺寸、2：大尺寸)
   type: 1
   id: 22707008 # 网易云分享的音乐ID(更换音乐请更改此配置项)
-  autoPlay: false # 是否开启自动播放，设置为 false 以减少权限错误
+  autoPlay: true # 是否开启自动播放
+  # 是否延迟加载播放器
+  lazyload: true
+  # 播放器尺寸自定义
+  size:
+    width: 300px
+    height: 86px
 
 # 访问量统计(不蒜子)
 busuanzi:
@@ -176,31 +177,24 @@ since: 2020
 icp:
   enable: true
   url: "https://beian.miit.gov.cn/" # 备案链接
-  text: "鲁ICP备2021025942号" # 备案信息
+  text: "1111111111111111111" # 备案信息
 # 公安备案信息尾部显示
 gongan:
   enable: false
   img: /images/beian.png #公安备案图片
   url: "https://beian.mps.gov.cn/#/query/webSearch" #公安备案链接
-  text: "鲁ICP备2021025942号" #公安备案信息
+  text: "11111111111111" #公安备案信息
 
 # 友情链接
 friends_link:
   Ayer原主题: #网站名称
     url: https://github.com/shen-yu/hexo-theme-ayer
-    # 网站图片(可忽略不写)  # 这行不是正确的YAML注释
-    img: /images/logo.png
+    # 网站图片(可忽略不写)
+    img: /images/ayer.png
   Ayerr主题-修复了图片显示后的主题: #网站名称
     url: https://github.com/Morlvoid/hexo-theme-ayerr
-    # 网站图片(可忽略不写)  # 这行不是正确的YAML注释
-    img: /images/logo.png
-  Tokameine:
-    url: https://tokameine.top
-    img: /images/tokameine.png
-  fulie-blog:
-    url: https://pcb.im/
-    img: https://q2.qlogo.cn/headimg_dl?dst_uin=3672492995&spec=5
-
+    # 网站图片(可忽略不写)
+    img: /images/ayer.png
 
 
 # 评论：1、Valine(推荐)；2、Gitalk；3、Twikoo; 4.MiniValine
@@ -241,8 +235,79 @@ minivaline:
   serverURL: https://minivaline.your-domain.com
 
 
-
 # 网站开启加密访问，密码可设置任何字符
 lock:
   enable: false
   password: 123456
+
+custom_css: /css/custom.css
+
+# 侧边栏配置
+sidebar:
+  # 侧边栏宽度
+  width: 12rem
+  # 侧边栏背景颜色和透明度
+  background_color: rgba(0, 0, 0, 0.8)
+  # 侧边栏背景样式：solid(纯色), gradient(渐变), transparent(透明)
+  background:
+    style: solid
+    # 背景颜色，仅在style为solid时有效
+    color: rgba(0, 0, 0, 0.8)
+    # 渐变背景，仅在style为gradient时有效
+    gradient:
+      from: rgba(0, 0, 0, 0.8)
+      to: rgba(30, 30, 30, 0.9)
+    # 预设背景样式：default, dark, light, colorful
+    preset: default
+  # 侧边栏边框配置
+  border:
+    enable: true
+    width: 1px
+    color: rgba(255, 255, 255, 0.1)
+    style: solid
+  # 侧边栏排版配置
+  typography:
+    # 字体类型
+    font: "Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif"
+    # 字体大小
+    font_size: 1.4rem
+    # 行间距
+    line_height: 1.8
+    # 字体颜色
+    color: "#bbb"
+    # 鼠标悬停颜色
+    hover_color: "#fff"
+
+# 文章分屏功能
+split_screen:
+  enable: true
+  # 默认是否开启分屏模式
+  default: false
+  # 分屏比例（左侧文字区域宽度占比）
+  ratio: 60
+
+# 文章样式配置
+article_style:
+  # 默认文章样式：single（单栏）或 split（分屏）
+  default: single
+  # 分屏模式下的响应式断点
+  responsive_breakpoint: 768px
+
+# Photo页面配置
+photo:
+  # Photo页面主题色
+  theme_color: "#2b2be2"
+  # 照片数据
+  photos:
+    - img: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'><rect width='800' height='600' fill='%23F5F7FA'/><path d='M240,400 Q360,160 520,400' stroke='%238A2BE2' stroke-width='3' fill='none'/><circle cx='360' cy='280' r='40' stroke='%238A2BE2' stroke-width='3' fill='none'/><circle cx='440' cy='280' r='40' stroke='%238A2BE2' stroke-width='3' fill='none'/></svg>"
+      caption: "微笑"
+      desc: "简单几笔勾勒出的笑脸，传达积极向上的情感。"
+    - img: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'><rect width='800' height='600' fill='%23F5F7FA'/><rect x='240' y='200' width='320' height='240' rx='20' stroke='%238A2BE2' stroke-width='3' fill='none'/><line x1='300' y1='300' x2='500' y2='300' stroke='%238A2BE2' stroke-width='3'/><line x1='300' y1='360' x2='500' y2='360' stroke='%238A2BE2' stroke-width='3'/></svg>"
+      caption: "窗"
+      desc: "透过简约的窗户，看到内心的世界。"
+    - img: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'><rect width='800' height='600' fill='%23F5F7FA'/><circle cx='400' cy='300' r='140' stroke='%238A2BE2' stroke-width='3' fill='none'/><line x1='400' y1='160' x2='400' y2='440' stroke='%238A2BE2' stroke-width='3'/><line x1='260' y1='300' x2='540' y2='300' stroke='%238A2BE2' stroke-width='3'/></svg>"
+      caption: "坐标"
+      desc: "在无限空间中定位自己的位置。"
+    - img: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'><rect width='800' height='600' fill='%23F5F7FA'/><path d='M200,440 Q300,200 400,440 Q500,200 600,440' stroke='%238A2BE2' stroke-width='3' fill='none'/><line x1='200' y1='440' x2='600' y2='440' stroke='%238A2BE2' stroke-width='3'/></svg>"
+      caption: "波浪"
+      desc: "流动的线条如同生命的起伏。"
