@@ -97,7 +97,7 @@ copyright_type: 2
 # 需要安装hexo-generator-searchdb(https://github.com/theme-next/hexo-generator-searchdb)
 # 搜索功能配置
 search:
-  path: search.xml               # 搜索文件路径，设置为 XML 格式
+  path: search.json               # 搜索文件路径，设置为 JSON 格式
   field: all                    # 搜索范围：post（仅文章）、page（仅页面）、all（全部）
   content: true                  # 是否包含文章内容
   format: striptags              # 内容格式化方式：striptags（去除标签）、raw（原始内容）
