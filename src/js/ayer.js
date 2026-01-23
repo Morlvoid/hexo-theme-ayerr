@@ -31,10 +31,10 @@
         }
     });
 
-    // Not recommended in mobile, /search.xml is actually large.
+    // Not recommended in mobile, /search.json is actually large.
     if ($(".local-search").length) {
         $.getScript("/js/search.js", function() {
-            searchFunc("/search.xml", "local-search-input", "local-search-result");
+            searchFunc("/search.json", "local-search-input", "local-search-result");
         });
     }
 
