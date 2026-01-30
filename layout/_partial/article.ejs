@@ -3,6 +3,24 @@
     function fixImagePaths(content, postPath) {
         if (!content) return content;
         
+        // 标记代码块，避免修正代码块中的图片路径示例
+        const codeBlockMarkers = [];
+        let markerIndex = 0;
+        
+        // 替换 HTML 格式的代码块为标记
+        content = content.replace(/<figure\s+class="highlight\s+[^>]*">[\s\S]*?<\/figure>/g, function(match) {
+            const marker = `__CODE_BLOCK_${markerIndex++}__`;
+            codeBlockMarkers.push(match);
+            return marker;
+        });
+        
+        // 替换 Markdown 格式的代码块为标记
+        content = content.replace(/```[\s\S]*?```/g, function(match) {
+            const marker = `__CODE_BLOCK_${markerIndex++}__`;
+            codeBlockMarkers.push(match);
+            return marker;
+        });
+        
         // 修正 HTML 标签格式的图片路径
         content = content.replace(/<img\s+src="([^"]+)"\s+alt="([^"]*)"\s*\/?>/g, function(match, src, alt) {
             // 如果路径已经是绝对路径或完整 URL，不做修改
@@ -21,6 +39,11 @@
             }
             // 修正相对路径
             return '![' + alt + '](' + postPath + src + ')';
+        });
+        
+        // 恢复代码块
+        content = content.replace(/__CODE_BLOCK_(\d+)__/g, function(match, index) {
+            return codeBlockMarkers[index];
         });
         
         return content;
